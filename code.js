@@ -95,11 +95,19 @@ nine.addEventListener('click', () => {
     displayValueString += "9";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
+// DECIMAL Function
 var decimal = document.querySelector("#DECIMAL");
 decimal.addEventListener("click", () => {
     displayValueArray.push('.');
     displayValueString += ".";
     document.getElementById("DISPLAY").innerHTML = displayValueString;
+})
+// DELETE Function
+var del = document.querySelector("#DELETE");
+del.addEventListener("click", () => {
+    displayValueArray.pop();
+    displayValueString = displayValueString.slice(0, displayValueString.length-1);
+    document.getElementById('DISPLAY').innerHTML = displayValueString;
 })
 // CLEAR Operator
 var clear = document.querySelector('#CLEAR');

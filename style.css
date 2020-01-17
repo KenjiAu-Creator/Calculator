@@ -26,3 +26,6 @@ button {
     display: inline-block;
     text-transform: none;
 }
+#DELETE {
+    width: 100px;
+}
