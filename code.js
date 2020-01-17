@@ -39,6 +39,7 @@ var zero = document.querySelector("#zero");
 zero.addEventListener('click', () => {
     displayValueArray.push(0)
     displayValueString += "0";
+    zero.className.add("#disp");
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var one = document.querySelector("#one");
