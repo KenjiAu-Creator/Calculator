@@ -165,7 +165,7 @@ var EQUAL = document.querySelector('#EQUALS');
 EQUAL.addEventListener('click', () => {
     if (!xString) {
         alert("ERROR! Missing arguments for expression")
-    }
+    };
     X = xString;
     Y = displayValueArray.join("");
     ans = operate(operator, X, Y);
