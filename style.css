@@ -1,0 +1,28 @@
+div {
+    text-align: center;
+}
+#DISPLAY {
+    padding-top: 250px;
+}
+div.numbers {
+    display: inline-block;
+}
+div.operators {
+    display: inline-block;
+    vertical-align: top;
+}
+#body {
+    text-align: center;
+}
+button {
+    -webkit-appearance: button;
+    height: 40px;
+    width: 50px;
+    border: none;
+    background-color: #efefef;
+    color: #797979;
+    font-size: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    text-transform: none;
+}
