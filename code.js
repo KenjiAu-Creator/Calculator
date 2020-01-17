@@ -176,8 +176,7 @@ EQUAL.addEventListener('click', () => {
 });
 // KEYBOARD SUPPORT
 window.addEventListener('keydown', function(e) {
-// NUMBERS
-    console.log(e.keyCode)
+    // NUMBERS
     switch (e.keyCode) {
         case (48):
             displayValueArray.push(0);
@@ -346,5 +345,11 @@ window.addEventListener('keydown', function(e) {
             document.getElementById('DISPLAY').innerHTML = displayValueString;
             operator = "divide";
             break;
+        // DELETE FUNCTION
+        case (8):
+            displayValueArray.pop();
+            displayValueString = displayValueString.slice(0, displayValueString.length-1);
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
         }
 });
