@@ -99,9 +99,11 @@ nine.addEventListener('click', () => {
 // DECIMAL Function
 var decimal = document.querySelector("#DECIMAL");
 decimal.addEventListener("click", () => {
-    displayValueArray.push('.');
-    displayValueString += ".";
-    document.getElementById("DISPLAY").innerHTML = displayValueString;
+    if (!displayValueArray.includes(".")) {
+        displayValueArray.push('.');
+        displayValueString += ".";
+        document.getElementById("DISPLAY").innerHTML = displayValueString;
+    };
 })
 // DELETE Function
 var del = document.querySelector("#DELETE");
@@ -352,5 +354,17 @@ window.addEventListener('keydown', function(e) {
             displayValueString = displayValueString.slice(0, displayValueString.length-1);
             document.getElementById('DISPLAY').innerHTML = displayValueString;
             break
+        case 190:
+            if (!displayValueArray.includes(".")) {
+                displayValueArray.push('.');
+                displayValueString += ".";
+                document.getElementById("DISPLAY").innerHTML = displayValueString;
+            };
+        case 110:
+            if (!displayValueArray.includes(".")) {
+                displayValueArray.push('.');
+                displayValueString += ".";
+                document.getElementById("DISPLAY").innerHTML = displayValueString;
+            };
         }
 });
