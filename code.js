@@ -9,6 +9,10 @@ const multi = function(x, y) {
     return x * y;
 };
 const div = function(x, y) {
+    if( y == 0) {
+        alert("ERROR CANNOT DIVIDE BY 0");
+        return 0;
+    }
     return x / y;
 };
 var operate = function(operator, x,  y) {
