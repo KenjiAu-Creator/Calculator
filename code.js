@@ -28,73 +28,77 @@ var operate = function(operator, x,  y) {
     };
 };
 // Mapping number buttons and working display
-var displayValue, displayValueArray, displayValueString, X, Y, xString;
+var displayValueArray, displayValueString, X, Y, xString;
 displayValueArray = [];
 displayValueString = "";
 var zero = document.querySelector("#zero");
 zero.addEventListener('click', () => {
     displayValueArray.push(0)
-    displayValueString = displayValueArray.join("");
+    displayValueString += "0";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var one = document.querySelector("#one");
 one.addEventListener('click', () => {
     displayValueArray.push(1);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "1";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var two = document.querySelector("#two");
 two.addEventListener('click', () => {
     displayValueArray.push(2);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "2";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var three = document.querySelector("#three");
 three.addEventListener('click', () => {
     displayValueArray.push(3);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "3";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var four = document.querySelector("#four");
 four.addEventListener('click', () => {
     displayValueArray.push(4);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "4";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var five = document.querySelector("#five");
 five.addEventListener('click', () => {
     displayValueArray.push(5);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "5";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var six = document.querySelector("#six");
 six.addEventListener('click', () => {
     displayValueArray.push(6);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "6";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var seven = document.querySelector("#seven");
 seven.addEventListener('click', () => {
     displayValueArray.push(7);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "7";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var eight = document.querySelector("#eight");
 eight.addEventListener('click', () => {
     displayValueArray.push(8);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "8";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var nine = document.querySelector("#nine");
 nine.addEventListener('click', () => {
     displayValueArray.push(9);
-    displayValueString = displayValueArray.join("");
+    displayValueString += "9";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 // CLEAR Operator
 var clear = document.querySelector('#CLEAR');
 clear.addEventListener('click', () => {
+    displayValueString = "";
     displayValueArray = [];
+    delete X;
+    delete Y;
+    xString = "";
     document.getElementById("DISPLAY").innerHTML = 0;
 });
 // Operators
@@ -102,9 +106,9 @@ var ADD = document.querySelector('#ADD');
 ADD.addEventListener('click', () => {
     if( !xString) {
         xString = displayValueString;
+        displayValueString = displayValueArray.concat("+").join("");
         displayValueArray = [];
     }
-    displayValueString = displayValueArray.concat("+").join("");
     document.getElementById('DISPLAY').innerHTML = displayValueString;
     operator = "add";
 });
@@ -112,9 +116,9 @@ var SUBTRACT = document.querySelector('#SUBTRACT');
 SUBTRACT.addEventListener('click', () => {
     if( !xString) {
         xString = displayValueString;
+        displayValueString = displayValueArray.concat("+").join("");
         displayValueArray = [];
     }
-    displayValueString = displayValueArray.concat("-").join("");
     document.getElementById('DISPLAY').innerHTML = displayValueString;
     operator = "subtract";
 });
@@ -122,9 +126,9 @@ var MULTIPLY = document.querySelector('#MULTIPLY');
 MULTIPLY.addEventListener('click', () => {
     if( !xString) {
         xString = displayValueString;
+        displayValueString = displayValueArray.concat("*").join("");
         displayValueArray = [];
     }
-    displayValueString = displayValueArray.concat("*").join("");
     document.getElementById('DISPLAY').innerHTML = displayValueString;
     operator = "multiply";
 });
@@ -132,9 +136,9 @@ var DIVIDE = document.querySelector('#DIVIDE');
 DIVIDE.addEventListener('click', () => {
     if( !xString) {
         xString = displayValueString;
+        displayValueString = displayValueArray.concat("/").join("");
         displayValueArray = [];
     }
-    displayValueString = displayValueArray.concat("/").join("");
     document.getElementById('DISPLAY').innerHTML = displayValueString;
     operator = "divide";
 });
@@ -144,5 +148,8 @@ EQUAL.addEventListener('click', () => {
     X = xString;
     Y = displayValueArray.join("");
     ans = operate(operator, X, Y);
-    document.getElementById("DISPLAY").innerHTML = ans;
+    displayValueString = ans;
+    document.getElementById("DISPLAY").innerHTML = displayValueString;
+    xString = "";
+    displayValueArray = [ans];
 });
