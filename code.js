@@ -134,7 +134,7 @@ var SUBTRACT = document.querySelector('#SUBTRACT');
 SUBTRACT.addEventListener('click', () => {
     if( !xString) {
         xString = displayValueString;
-        displayValueString = displayValueArray.concat("+").join("");
+        displayValueString = displayValueArray.concat("-").join("");
         displayValueArray = [];
     }
     document.getElementById('DISPLAY').innerHTML = displayValueString;
@@ -173,4 +173,178 @@ EQUAL.addEventListener('click', () => {
     document.getElementById("DISPLAY").innerHTML = displayValueString;
     xString = "";
     displayValueArray = [ans];
+});
+// KEYBOARD SUPPORT
+window.addEventListener('keydown', function(e) {
+// NUMBERS
+    console.log(e.keyCode)
+    switch (e.keyCode) {
+        case (48):
+            displayValueArray.push(0);
+            displayValueString += "0";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (96):
+            displayValueArray.push(0);
+            displayValueString += "0";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (49):
+            displayValueArray.push(1);
+            displayValueString += "1";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (97):
+            displayValueArray.push(1);
+            displayValueString += "1";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;  
+            break  
+        case (50):
+            displayValueArray.push(2);
+            displayValueString += "2";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (98):
+            displayValueArray.push(2);
+            displayValueString += "2";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (51):
+            displayValueArray.push(3);
+            displayValueString += "3";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (99):
+            displayValueArray.push(3);
+            displayValueString += "3";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (52):
+            displayValueArray.push(4);
+            displayValueString += "4";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (100):
+            displayValueArray.push(4);
+            displayValueString += "4";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (53):
+            displayValueArray.push(5);
+            displayValueString += "5";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (101):
+            displayValueArray.push(5);
+            displayValueString += "5";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (54):
+            displayValueArray.push(6);
+            displayValueString += "6";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (102):
+            displayValueArray.push(6);
+            displayValueString += "6";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (55):
+            displayValueArray.push(7);
+            displayValueString += "7";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (103):
+            displayValueArray.push(7);
+            displayValueString += "7";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (104):
+            displayValueArray.push(8);
+            displayValueString += "8";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (57):
+            displayValueArray.push(9);
+            displayValueString += "9";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (105):
+            displayValueArray.push(9);
+            displayValueString += "9";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+// OPERATORS
+        // ADD
+        case (187):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("+").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "add";
+            break;
+        case (107):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("+").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "add";
+            break;
+        // SUBTRACT
+        case (189):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("-").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "subtract";
+            break;
+        case (109):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("-").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "subtract";
+            break;
+        // EQUAL / ENTER
+        case (13):
+            if (!xString) {
+                alert("ERROR! Missing arguments for expression")
+            };
+            X = xString;
+            Y = displayValueArray.join("");
+            ans = operate(operator, X, Y);
+            displayValueString = ans;
+            document.getElementById("DISPLAY").innerHTML = displayValueString;
+            xString = "";
+            displayValueArray = [ans];
+            break;
+        // MULTIPLY
+        case (106):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("*").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "multiply";
+            break;
+        // DIVIDE
+        case (111):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("/").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "divide";
+            break;
+        }
 });
