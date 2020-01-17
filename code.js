@@ -95,6 +95,12 @@ nine.addEventListener('click', () => {
     displayValueString += "9";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
+var decimal = document.querySelector("#DECIMAL");
+decimal.addEventListener("click", () => {
+    displayValueArray.push('.');
+    displayValueString += ".";
+    document.getElementById("DISPLAY").innerHTML = displayValueString;
+})
 // CLEAR Operator
 var clear = document.querySelector('#CLEAR');
 clear.addEventListener('click', () => {
