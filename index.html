@@ -1,28 +1,44 @@
 <html>
     <head>
-        <script src="code.js"></script>
     </head>
     <body>
-        <div id="DISPLAY"></div>
+        <div id="DISPLAY"><a id=disp">0123456789</a></div>
         <div class="numbers">
-            <button id="0"0></button>
-            <button id="1">1</button>
-            <button id="2">2</button>
-            <button id="3">3</button>
-            <button id="4">4</button>
-            <button id="5">5</button>
-            <button id="6">6</button>
-            <button id="7">7</button>
-            <button id="8">8</button>
-            <button id="9">9</button>
+            <p>
+                <button id="seven">7</button>
+                <button id="eight">8</button>
+                <button id="nine">9</button>
+            </p>
+            <p>
+                <button id="four">4</button>
+                <button id="five">5</button>
+                <button id="six">6</button>
+            </p>
+            <p>
+                <button id="one">1</button>
+                <button id="two">2</button>
+                <button id="three">3</button>
+            </p>
+            <p>
+                <button id="zero">0</button>
+                <button id="DECIMAL">.</button>
+                <button id="ANSWER">Ans</button>
+            </p>
         </div>
         <div class="operators">
-            <button id="ADD">+</button>
-            <button id="SUBTRACT">-</button>
-            <button id="MULTIPLY">*</button>
-            <button id="DIVIDE">/</button>
-            <button id="EQUALS">=</button>
-            <button id="CLEAR">AC</button>
+            <p id="addSub">
+                <button id="ADD">+</button>
+                <button id="SUBTRACT">-</button>
+            </p>
+            <p id="MultiDiv">
+                <button id="MULTIPLY">*</button>
+                <button id="DIVIDE">/</button>
+            </p>
+            <p id="EqlClr">
+                <button id="EQUALS">=</button>
+                <button id="CLEAR">Clear</button>
+            </p>
         </div>
     </body>
+    <script src="code.js"></script>
 </html>
