@@ -32,7 +32,10 @@ var operate = function(operator, x,  y) {
     };
 };
 // Mapping number buttons and working display
-var displayValueArray, displayValueString, X, Y, xString;
+var displayValueArray, displayValueString, X, Y, xString, Val, Op, ans;
+Val = [];
+Op =[];
+ans = 0;
 displayValueArray = [];
 displayValueString = "";
 var zero = document.querySelector("#zero");
@@ -122,55 +125,60 @@ clear.addEventListener('click', () => {
 // Operators
 var ADD = document.querySelector('#ADD');
 ADD.addEventListener('click', () => {
-    if( !xString) {
-        xString = displayValueString;
-        displayValueString = displayValueArray.concat("+").join("");
-        displayValueArray = [];
-    }
+    Val.push(displayValueArray.join(""));
+    Op.push("add");
+    displayValueString += "+";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
-    operator = "add";
+    displayValueArray =[];
 });
 var SUBTRACT = document.querySelector('#SUBTRACT');
 SUBTRACT.addEventListener('click', () => {
-    if( !xString) {
-        xString = displayValueString;
-        displayValueString = displayValueArray.concat("+").join("");
-        displayValueArray = [];
-    }
+    Val.push(displayValueArray.join(""));
+    Op.push("subtract");
+    displayValueString += "-";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
-    operator = "subtract";
+    displayValueArray = [];
 });
-var MULTIPLY = document.querySelector('#MULTIPLY');
-MULTIPLY.addEventListener('click', () => {
-    if( !xString) {
-        xString = displayValueString;
-        displayValueString = displayValueArray.concat("*").join("");
-        displayValueArray = [];
-    }
-    document.getElementById('DISPLAY').innerHTML = displayValueString;
-    operator = "multiply";
-});
-var DIVIDE = document.querySelector('#DIVIDE');
-DIVIDE.addEventListener('click', () => {
-    if( !xString) {
-        xString = displayValueString;
-        displayValueString = displayValueArray.concat("/").join("");
-        displayValueArray = [];
-    }
-    document.getElementById('DISPLAY').innerHTML = displayValueString;
-    operator = "divide";
-});
+// var MULTIPLY = document.querySelector('#MULTIPLY');
+// MULTIPLY.addEventListener('click', () => {
+//     if( !xString) {
+//         xString = displayValueString;
+//         displayValueString = displayValueArray.concat("*").join("");
+//         displayValueArray = [];
+//     }
+//     document.getElementById('DISPLAY').innerHTML = displayValueString;
+//     operator = "multiply";
+// });
+// var DIVIDE = document.querySelector('#DIVIDE');
+// DIVIDE.addEventListener('click', () => {
+//     if( !xString) {
+//         xString = displayValueString;
+//         displayValueString = displayValueArray.concat("/").join("");
+//         displayValueArray = [];
+//     }
+//     document.getElementById('DISPLAY').innerHTML = displayValueString;
+//     operator = "divide";
+// });
 // Equals
 var EQUAL = document.querySelector('#EQUALS');
 EQUAL.addEventListener('click', () => {
-    if (!xString) {
+    if( ans == 0) {
+        Val.push(displayValueArray.join(""));
+    }
+    if (Val.length <= 1) {
         alert("ERROR! Missing arguments for expression")
     };
-    X = xString;
-    Y = displayValueArray.join("");
-    ans = operate(operator, X, Y);
-    displayValueString = ans;
+    for(let i = 0;i < Val.length-1; i++) {
+        console.log(i)
+        console.log(Val)
+        Val[i+1] = operate(Op[i],Val[i], Val[i+1]);
+        
+    };
+    console.log(Val)
+    displayValueString = Val[Val.length-1];
     document.getElementById("DISPLAY").innerHTML = displayValueString;
-    xString = "";
-    displayValueArray = [ans];
+    displayValueArray = [];
+    Val = [displayValueString];
+    Op = []
+    ans = Val;
 });
