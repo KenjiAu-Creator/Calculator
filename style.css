@@ -1,18 +1,17 @@
 div {
     text-align: center;
 }
-#DISPLAY {
+#calculator {
     padding-top: 250px;
-}
-div.numbers {
-    display: inline-block;
-}
-div.operators {
-    display: inline-block;
-    vertical-align: top;
-}
-#body {
     text-align: center;
+}
+div.Buttons {
+    display: inline-block;
+    border-style: solid;
+    border-width: 2px;
+    padding: 10px 15px 0 15px;
+    border-radius: 10px;
+    border-color: #797979;
 }
 button {
     -webkit-appearance: button;
@@ -28,4 +27,13 @@ button {
 }
 #DELETE {
     width: 100px;
+}
+#DISPLAY {
+    text-align: right;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #797979;
+    border-radius: 5px;
+    padding-right: 10px;
+    font-size: 30px;
 }

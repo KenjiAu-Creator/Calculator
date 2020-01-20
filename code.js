@@ -40,6 +40,7 @@ displayValueString = "";
 var zero = document.querySelector("#zero");
 zero.addEventListener('click', () => {
     displayValueString += "0";
+    zero.className.add("#disp");
     document.getElementById('DISPLAY').innerHTML = displayValueString;
 });
 var one = document.querySelector("#one");
@@ -90,9 +91,11 @@ nine.addEventListener('click', () => {
 // DECIMAL Function
 var decimal = document.querySelector("#DECIMAL");
 decimal.addEventListener("click", () => {
-    displayValueArray.push('.');
-    displayValueString += ".";
-    document.getElementById("DISPLAY").innerHTML = displayValueString;
+    if (!displayValueArray.includes(".")) {
+        displayValueArray.push('.');
+        displayValueString += ".";
+        document.getElementById("DISPLAY").innerHTML = displayValueString;
+    };
 })
 // DELETE Function
 var del = document.querySelector("#DELETE");
@@ -120,8 +123,6 @@ ADD.addEventListener('click', () => {
 });
 var SUBTRACT = document.querySelector('#SUBTRACT');
 SUBTRACT.addEventListener('click', () => {
-    Val.push(displayValueArray.join(""));
-    Op.push("subtract");
     displayValueString += "-";
     document.getElementById('DISPLAY').innerHTML = displayValueString;
     displayValueArray = [];
@@ -179,4 +180,174 @@ EQUAL.addEventListener('click', () => {
     ans = (Math.round(numbers*1000)/1000);
     displayValueString = ans;
     document.getElementById("DISPLAY").innerHTML = displayValueString
+});
+// KEYBOARD SUPPORT
+window.addEventListener('keydown', function(e) {
+    // NUMBERS
+    switch (e.keyCode) {
+        case (48):
+            displayValueString += "0";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (96):
+            displayValueString += "0";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (49):
+            displayValueString += "1";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (97):
+            displayValueString += "1";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;  
+            break  
+        case (50):
+            displayValueString += "2";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (98):
+            displayValueString += "2";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (51):
+            displayValueString += "3";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (99):
+            displayValueString += "3";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (52):
+            displayValueString += "4";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (100):
+            displayValueString += "4";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (53):
+            displayValueString += "5";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (101):
+            displayValueString += "5";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (54):
+            displayValueString += "6";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (102):
+            displayValueString += "6";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (55):
+            displayValueString += "7";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (103):
+            displayValueString += "7";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (104):
+            displayValueString += "8";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (57):
+            displayValueString += "9";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case (105):
+            displayValueString += "9";
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+// OPERATORS
+        // ADD
+        case (187):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("+").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "add";
+            break;
+        case (107):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("+").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "add";
+            break;
+        // SUBTRACT
+        case (189):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("-").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "subtract";
+            break;
+        case (109):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("-").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "subtract";
+            break;
+        // EQUAL / ENTER
+        case (13):
+            if (!xString) {
+                alert("ERROR! Missing arguments for expression")
+            };
+            X = xString;
+            Y = displayValueArray.join("");
+            ans = operate(operator, X, Y);
+            displayValueString = ans;
+            document.getElementById("DISPLAY").innerHTML = displayValueString;
+            xString = "";
+            displayValueArray = [ans];
+            break;
+        // MULTIPLY
+        case (106):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("*").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "multiply";
+            break;
+        // DIVIDE
+        case (111):
+            if( !xString) {
+                xString = displayValueString;
+                displayValueString = displayValueArray.concat("/").join("");
+                displayValueArray = [];
+            }
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            operator = "divide";
+            break;
+        // DELETE FUNCTION
+        case (8):
+            displayValueArray.pop();
+            displayValueString = displayValueString.slice(0, displayValueString.length-1);
+            document.getElementById('DISPLAY').innerHTML = displayValueString;
+            break
+        case 190:
+            if (!displayValueArray.includes(".")) {
+                displayValueString += ".";
+                document.getElementById("DISPLAY").innerHTML = displayValueString;
+            };
+        case 110:
+            if (!displayValueArray.includes(".")) {
+                displayValueString += ".";
+                document.getElementById("DISPLAY").innerHTML = displayValueString;
+            };
+        }
 });
