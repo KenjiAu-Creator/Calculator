@@ -37,3 +37,7 @@ button {
     padding-right: 10px;
     font-size: 30px;
 }
+
+#keyboard {
+    text-align: middle;
+}
